@@ -2,7 +2,7 @@ import java.util.NoSuchElementException;
 //import java.util.NullPointerException;
 public class MyDeque<E>{
   private E[] data;
-  public int size, start, end, elements;
+  private int size, start, end, elements;
 
   public MyDeque(){
     @SuppressWarnings("unchecked")
