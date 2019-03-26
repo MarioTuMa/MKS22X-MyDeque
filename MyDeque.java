@@ -159,7 +159,7 @@ public class MyDeque<E>{
     else{
 
       start ++;
-      return data[(start+1)%size];
+      return data[(start-1+size)%size];
     }
 
 
