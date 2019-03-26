@@ -2,13 +2,13 @@ import java.util.*;
 
 public class Driver {
 
-	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 
 	Important: this Driver is contingent on your toString already working. If your toString is broken, you may recieve confusing results.
 
 
-	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */ 
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 	private static String message(String input, String desired, String output) {
 		return String.format("\n%s\n\n\tDesired output:   %s\n\tYour output:      %s", input, desired, output);
@@ -48,6 +48,7 @@ public class Driver {
 			out.add(message("{}.toString()", "\"{}\"", "\""+deque.toString()+"\""));
 
 		if (deque.size() != 0)
+			//System.out.println("size error");
 			out.add(message("{}.size()", 0, deque.size()));
 
 		// exception testing
@@ -109,6 +110,7 @@ public class Driver {
 			try {
 				deque.addLast(i);
 				comp.addLast(i);
+
 				if (!edge_check(comp, deque)) {
 					out.add(message(old+".addLast("+i+")", gist_string(comp), gist_string(deque)));
 					break;
@@ -124,7 +126,7 @@ public class Driver {
 		}
 
 		// removing from end without wrap
-
+		//out.add("129");
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
 			try {
@@ -148,6 +150,7 @@ public class Driver {
 
 		deque = new MyDeque<>();
 		comp = new ArrayDeque<>();
+		//out.add("153");
 
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
@@ -167,15 +170,18 @@ public class Driver {
 				break;
 			}
 		}
-
+		//out.add(deque.toString());
+		//out.add(comp.toString());
 		// removing from front without wrap
-
+		//out.add("175");
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
 			try {
 				deque.removeFirst();
 				comp.removeFirst();
+
 				if (!edge_check(comp, deque)) {
+
 					out.add(message(old+".removeFirst()", gist_string(comp), gist_string(deque)));
 					break;
 				}
@@ -184,6 +190,11 @@ public class Driver {
 					break;
 				}
 			} catch (Exception e) {
+				out.add(deque.toString());
+				out.add(comp.toString());
+				out.add(Integer.toString(deque.size()));
+				out.add(Integer.toString(comp.size()));
+				out.add(Integer.toString(deque.elements));
 				out.add(message(old+".removeFirst()", gist_string(comp), e.toString()));
 				break;
 			}
@@ -193,7 +204,7 @@ public class Driver {
 
 		deque = new MyDeque<>();
 		comp = new ArrayDeque<>();
-
+		//out.add("201");
 		for (int i = 0; i < 500; i++) {
 			String old = gist_string(deque);
 			try {
@@ -230,7 +241,7 @@ public class Driver {
 		}
 
 		// adding forward to meet at middle
-
+		//out.add("238");
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
 			try {
@@ -251,7 +262,7 @@ public class Driver {
 		}
 
 		// removing from end with wrap
-
+		//out.add("259");
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
 			try {
@@ -275,7 +286,7 @@ public class Driver {
 
 		deque = new MyDeque<>();
 		comp = new ArrayDeque<>();
-
+		//out.add("283");
 		for (int i = 0; i < 500; i++) {
 			String old = gist_string(deque);
 			try {
@@ -312,7 +323,7 @@ public class Driver {
 		}
 
 		// adding backward to meet at middle
-
+		//out.add("320");
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
 			try {
@@ -333,7 +344,7 @@ public class Driver {
 		}
 
 		// removing from front with wrap
-
+		//out.add("341");
 		for (int i = 0; i < 1000; i++) {
 			String old = gist_string(deque);
 			try {
